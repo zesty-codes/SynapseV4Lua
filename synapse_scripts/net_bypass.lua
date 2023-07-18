@@ -77,8 +77,3 @@ for i = 1, 20 do
         netlessfunc2()
     end)()
 end
-	)
-	Duration = 160
-end
-
-]]
