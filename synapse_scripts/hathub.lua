@@ -1,6 +1,6 @@
 -- // define alias for http function
 
-local http_request = http_request;
+local http_request = http_request or request or syn and syn.request or http and http.request or fluxus and fluxus.request or HttpRequest;
 if syn then
 	http_request = syn.request
 elseif SENTINEL_V2 then
