@@ -1038,7 +1038,7 @@ function insertScript(script)
 	custom_script.Size = UDim2.new(0, 427, 0, 17)
 	custom_script.Font = Enum.Font.RobotoMono
 	local e = script:gsub("synv4/scripts\\", "")
-	custom_script.Text = e..".lua"
+	custom_script.Text = e
 	custom_script.TextColor3 = Color3.fromRGB(255, 255, 255)
 	custom_script.TextSize = 14.000
 	custom_script.TextWrapped = true
