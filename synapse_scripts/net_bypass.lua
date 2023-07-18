@@ -2,7 +2,7 @@
 local setsimulationradius = setsimulationradius or set_simulation_radius
 game:GetService("RunService").Stepped:Connect(function()
     settings().Physics.AllowSleep = false
-    setsimulationradius(math.huge*math.huge,math.huge*math.huge)
+    if setsimulationradius then setsimulationradius(math.huge*math.huge,math.huge*math.huge) end
 end)
 -- this code under was copied from HatHub
 _G.objs = {}
