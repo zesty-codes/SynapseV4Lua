@@ -7,12 +7,12 @@ end)
 -- this code under was copied from HatHub
 _G.objs = {}
 spoof = function(obj, property, value)
-	local s = pcall(function()
-		local lol = obj[property]
-	end)
-	if s then
-		table.insert(_G.objs, {obj, property, value})
-	end
+      local s = pcall(function()
+            local lol = obj[property]
+      end)
+      if s then
+            table.insert(_G.objs, {obj, property, value})
+      end
 end
 spoof(game.Players.LocalPlayer, "MaximumSimulationRadius", 1000)
 spoof(game.Players.LocalPlayer, "SimulationRadius", 1000)
@@ -33,7 +33,6 @@ local setscriptable = setscriptable or set_scriptable
 local g = game
 local s = g.GetService
 function netlessfunc()
-         if not getgenv().netless then return getgenv().netless end
     local lplr = game.Players.LocalPlayer
     local chr = lplr.Character
     setscriptable(lplr, "SimulationRadius", true)
@@ -43,16 +42,8 @@ function netlessfunc()
     pset.PhysicsEnvironmentalThrottle = Enum['EnviromentalPhysicsThrottle'].Disabled
     lplr.MaximumSimulationRadius = 10000000
     lplr.ReplicationFocus = workspace or Services.Workspace
-    lplr.MaxSimulationRadius = 10000000
-    lplr.SimulationRadius = 10000000
     for i, v in next, chr:GetChildren() do
-        if v.ClassName:find("Part") then
-            coroutine.wrap(function()
-                pcall(function()
-                    v.Velocity = Vector3.new(0, -20, 0)
-                end)
-            end)()
-        elseif v.ClassName == "Accessory" then
+       if v.ClassName == "Accessory" then
             coroutine.wrap(function()
                 pcall(function()
                     v.Handle.Velocity = Vector3.new(-17.7, 0, -17.7)
@@ -66,14 +57,10 @@ s(g, "RunService").RenderStepped:Connect(netlessfunc)
 s(g, "RunService").Heartbeat:Connect(netlessfunc)
 local i = 260
 local netlessfunc2 = function()
-	  while game:GetService("RunService").Heartbeat:wait() do
-		    for _ = 1, i do
-			      netlessfunc()
-		    end
-	  end
+        while game:GetService("RunService").Heartbeat:wait() do
+                for _ = 1, i do
+                        netlessfunc()
+                end
+        end
 end
-for i = 1, 20 do
-    coroutine.wrap(function()
-        netlessfunc2()
-    end)()
-end
+netlessfunc2()
